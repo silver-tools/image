@@ -1,0 +1,39 @@
+{
+    "name": "silver-tools/image",
+    "description": "PHP utility class for image",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "cakephp/cakephp-codesniffer": "^4.6",
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverImage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SilverImage\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "check": [
+            "@test",
+            "@cs-check",
+            "@stan"
+        ],
+        "cs-check": "phpcs --colors -p src/ tests/",
+        "cs-fix": "phpcbf --colors --parallel=16 -p src/ tests/",
+        "stan": "phpstan analyse src/ tests/",
+        "test": "phpunit --colors=always"
+    }
+}
